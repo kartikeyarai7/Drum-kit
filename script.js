@@ -4,14 +4,14 @@ let aud = document.getElementsByTagName("audio");
 // let body = document.getElementsByTagName("body");
 console.log(aud);
 
-for (let i = 0; i < keys.length; i++) {
-  keys[i].addEventListener("mouseenter", () => {
-    keys[i].classList.toggle("playing");
-  });
-  keys[i].addEventListener("mouseover", () => {
-    keys[i].classList.toggle("playing");
-  });
-}
+// for (let i = 0; i < keys.length; i++) {
+//   keys[i].addEventListener("mouseenter", () => {
+//     keys[i].classList.toggle("playing");
+//   });
+//   keys[i].addEventListener("mouseover", () => {
+//     keys[i].classList.toggle("playing");
+//   });
+// }
 // console.log(keys);
 
 let keyCollection = [];
@@ -41,6 +41,13 @@ function playThisKey(code) {
 }
 
 document.addEventListener("keydown", e => {
+  console.log(e.keyCode);
+  for (let i = 0; i < keys.length; i++) {
+    let a = keys[i].getAttribute("data-key");
+    if (a == e.keyCode) {
+      keys[i].classList.toggle("playing");
+    }
+  }
   keyCollection.forEach(item => {
     if (item == e.keyCode) {
       audioKeyCollection.forEach(ele => {
